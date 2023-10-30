@@ -1,0 +1,8 @@
+summary: New generation tests fully leveraging tmt
+
+discover:
+    how: fmf
+    test:
+        - /ng
+execute:
+    how: tmt
