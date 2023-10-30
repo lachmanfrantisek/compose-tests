@@ -43,7 +43,7 @@ cd tests/ng/podman/image/ls
 ./test.sh
 ```
 
-You can also run them using the `tmt` tool. Example of how to run `podman/image/ls` with `tmt` provisioned locally (run directly on your machine).
+You can also run them using the `tmt` tool. Example of how to run `podman/image/ls` with `tmt` directly on your machine.
 
 ```sh
 tmt -vv -c distro=centos-stream-9 run -a provision --how=local test --name /ng/podman/image/ls
