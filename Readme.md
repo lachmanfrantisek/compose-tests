@@ -25,7 +25,7 @@ TMT tests
 * `ng`: The new generation tests. These will be organized in one directory per packages and one directory per integration test comprising multiple packages.
 * `t_functional`: Contains the tests imported from `t_functional`.
 
-## Adding a Test to `ng`
+# Adding a Test to `ng`
 
 Create a folder inside `ng/` named after the package you want to test, e.g., `httpd`. It could also be named after some integration test involving multiple packages (e.g., `httpd-php-postgresql`).
 
@@ -60,10 +60,28 @@ Test outputs will be in the default temp `tmt` folder, e.g. `/var/tmp/tmt`. If y
         summary: 1 test passed
 ```
 
-## Adding an External Test
+# Adding an External Test
 
 Create a `.fmf` file within `plans/external/` named after the package, and follow the `tmt` documentation how to import tmt tests from git (see the `discover` step [Example](https://tmt.readthedocs.io/en/stable/examples.html#plans), and [Specs](https://tmt.readthedocs.io/en/stable/spec/plans.html#spec-plans-discover) ). You can follow the `plans/external/podman.fmf` example.
 
+# Enabling/Disabling Tests
+
+You can enable or disable test based on the distro in the `fmf` file. Example:
+
+```yaml
+enabled: true # default
+adjust: # change "enabled" value when condition is true
+  when: distro == centos-7
+  enabled: false
+```
+
+You can also disable a test all together with the same `enabled: false` flag on the test `fmf` file. Example:
+
+```yaml
+summary: tests podman pull
+description: It tests podman pull with different options
+enabled: false # disabling for now until issue #99999 is resolved
+```
 
 # Tiers
 
