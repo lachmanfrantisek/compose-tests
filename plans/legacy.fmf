@@ -3,6 +3,6 @@ summary: Imported t_functional tests
 discover:
     how: fmf
     test:
-        - /t_functional
+        - /legacy
 execute:
     how: tmt

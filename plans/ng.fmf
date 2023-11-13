@@ -2,7 +2,6 @@ summary: New generation tests fully leveraging tmt
 
 discover:
     how: fmf
-    test:
-        - /ng
+    exclude: /legacy
 execute:
     how: tmt
