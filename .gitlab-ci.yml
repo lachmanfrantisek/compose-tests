@@ -1,5 +1,6 @@
 stages:
   - verify
+  - test
 
 workflow:
   rules:
@@ -14,3 +15,9 @@ verify:
   script:
     - tmt lint --failed-only
     - find . -name '*.sh' -not -path "*/legacy/*" | xargs -n 1 shellcheck --severity=error --shell=bash
+
+testing-farm-job:
+  stage: test
+  image: quay.io/testing-farm/cli:latest
+  script:
+    - testing-farm request --git-ref $CI_MERGE_REQUEST_REF_PATH --git-url $CI_MERGE_REQUEST_PROJECT_URL --compose CentOS-Stream-9
